@@ -1,11 +1,8 @@
-
 U_name = "Bhabina"
 Followers = 1000
 Ratings = 3.89
 Verified = True
 print(U_name, Followers, Ratings, Verified)
-
-
 Name = input("Enter your Name :")
 followers = int(input("Enter the no of followers:"))
 Ratings = float(input("Enter the Rating:"))
