@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>DOM</h2>
+    <p id ="text">Original Text</p>
+    <button onclick="changeText()">Change Text</button>
+    <h1 id="title">Hello</h1>
+
+    <h2> Events</h2>
+  <button id="myBtn">Click Me</button>
+  <p id="msg"></p>
+
+  <script>
+    document.getElementById("myBtn").addEventListener("click", function() {
+      document.getElementById("msg").innerText = "Button Clicked!";
+    });
+    function changeText(){
+        document.getElementById("text").innerText="Text changed";
+    }
+  </script>
+</body>
+</html>

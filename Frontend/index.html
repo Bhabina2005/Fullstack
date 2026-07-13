@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend page</title>
+    <link rel="stylesheet" href="sheet.css" />
+</head>
+<body>
+    <h1>Css Box Model</h1>
+    <p>this is box model model</p>
+
+    <div class="box-content">
+        I am the content
+    </div>
+
+    <div class="card">
+        I am a card
+    </div>
+    <div class="card">
+        I am an another card
+    </div>
+
+    <div class="container">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+
+    <h2>Grid</h2>
+    <div class="grid">
+        <div>BOX</div>
+        <div>BOX</div>
+        <div>BOX</div>
+        <div>BOX</div>
+        <div>BOX</div>
+    </div>
+    <h2>Responsive design</h2>
+    <p>Use this to change the style on small screens</p>
+    <div class="responsive-design">Resize the window</div>
+
+    <h2>Interactive Demo</h2>
+    <p id="changeText">Original Text</p>
+    <button class="btn" onclick="changeTextFunction()">Change Text</button>
+
+    <script>
+        function changeTextFunction() {
+            document.getElementById("changeText").innerText = "Text Changed!";
+        }
+        
+        function checkscreen() {
+            var status = document.getElementById("screen-status");
+            if (window.innerWidth <= 600) {
+                status.innerText = "You are on a small screen";
+            } else {
+                status.innerText = "You are on a big screen";
+            }
+        }
+    </script>
+</body>
+</html>
