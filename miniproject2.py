@@ -19,4 +19,3 @@ for hour in hourly:
     Humidity=hour["humidity"]
     desc=hour["weatherDesc"][0]["value"]
     print(f"Time: {time} ,Temp: {temp}C , Humidity: {Humidity}%, Condition: {desc}")
-
