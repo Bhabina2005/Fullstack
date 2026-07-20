@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}Bookshelf{% endblock %}
+    </title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <!-- Logo -->
+
+        <div class="brand">
+
+            <a href="{% url 'book_list' %}" class="logo">
+                📚 Bookshelf
+            </a>
+
+            <p class="tagline">
+                Organize your reading list with confidence.
+            </p>
+
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="site-nav">
+
+            <a href="{% url 'book_list' %}">
+                Home
+            </a>
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'book_add' %}">
+                    Add Book
+                </a>
+
+                <span class="user-greeting">
+                    👋 Welcome, <strong>{{ user.username }}</strong>
+                </span>
+
+                <a href="{% url 'logout' %}" class="btn-outline">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'login' %}" class="btn-primary">
+                    Login
+                </a>
+
+            {% endif %}
+
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- ================= MESSAGES ================= -->
+
+{% if messages %}
+
+<div class="container">
+
+    {% for message in messages %}
+
+        <div class="alert {{ message.tags }}">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="site-content">
+
+    <div class="container">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 Bookshelf |
+            Built with Django ❤️
+        </p>
+
+    </div>
+
+</footer>
+
+{% block extra_js %}
+{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f5f7fb;
+    color:#2c3e50;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.site-header{
+    background:#2c3e50;
+    color:white;
+    padding:20px 0;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.header-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    text-decoration:none;
+    color:white;
+    font-size:30px;
+    font-weight:700;
+}
+
+.tagline{
+    color:#dcdde1;
+    font-size:14px;
+    margin-top:5px;
+}
+
+.site-nav{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.site-nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.site-nav a:hover{
+    color:#f1c40f;
+}
+
+.user-greeting{
+    color:#ecf0f1;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    background:white;
+    padding:60px;
+    border-radius:15px;
+    margin:40px 0;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn,
+.btn-primary{
+    display:inline-block;
+    padding:12px 22px;
+    background:#3498db;
+    color:white;
+    text-decoration:none;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn:hover,
+.btn-primary:hover{
+    background:#2980b9;
+}
+
+.btn-outline{
+    border:2px solid white;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:#2c3e50;
+}
+
+/* ================= BOOKS ================= */
+
+.book-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:30px;
+}
+
+.book-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.book-card:hover{
+    transform:translateY(-5px);
+}
+
+.book-card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+}
+
+.book-content{
+    padding:20px;
+}
+
+.book-content h3{
+    margin-bottom:10px;
+}
+
+.rating{
+    color:#f39c12;
+    font-weight:600;
+}
+
+/* ================= FORMS ================= */
+
+.book-form,
+.login-box{
+    max-width:600px;
+    margin:50px auto;
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.book-form label,
+.login-box label{
+    display:block;
+    margin:15px 0 6px;
+    font-weight:600;
+}
+
+.book-form input,
+.book-form textarea,
+.book-form select,
+.login-box input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+/* ================= REVIEWS ================= */
+
+.review{
+    background:white;
+    margin:20px 0;
+    padding:20px;
+    border-left:5px solid #3498db;
+    border-radius:8px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:60px;
+}

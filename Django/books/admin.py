@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, Review
+from .models import Books, Review
 
 
 # Register your models here.
@@ -9,9 +9,9 @@ class ReviewInline(admin.TabularInline):
     extra = 1
 
 
-@admin.register(Book)
+@admin.register(Books)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ['title', 'author', 'added_by', 'created_at']
+    list_display = ['title', 'author', 'user', 'created_at']
     search_fields = ['title', 'author']
     inlines = [ReviewInline]
 

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Bookshelf{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>📚 Discover Your Next Favorite Book</h1>
+    <p>
+        Explore, review, and organize your personal book collection.
+        Share your thoughts and discover books recommended by others.
+    </p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'book_add' %}" class="btn">
+            ➕ Add New Book
+        </a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn">
+            Login to Add Books
+        </a>
+    {% endif %}
+</section>
+
+<section>
+
+    <h2 style="margin-bottom:25px;">Latest Books</h2>
+
+    {% if books %}
+
+    <div class="book-list">
+
+        {% for book in books %}
+
+        <div class="book-card">
+
+            {% if book.cover %}
+                <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+            {% else %}
+                <img src="https://via.placeholder.com/400x500?text=No+Cover" alt="No Cover">
+            {% endif %}
+
+            <div class="book-content">
+
+                <h3>{{ book.title }}</h3>
+
+                <p><strong>Author:</strong> {{ book.author }}</p>
+
+                <p>
+                    {{ book.description|truncatewords:18 }}
+                </p>
+
+                {% if book.avg_rating %}
+                    <p class="rating">
+                        ⭐ {{ book.avg_rating|floatformat:1 }}/5
+                    </p>
+                {% else %}
+                    <p class="rating">
+                        ⭐ No ratings yet
+                    </p>
+                {% endif %}
+
+                <br>
+
+                <a href="{% url 'book_detail' book.pk %}" class="btn">
+                    View Details
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div style="text-align:center; padding:80px 20px;">
+
+        <h2>No Books Available</h2>
+
+        <p style="margin:20px 0;">
+            Your library is empty. Add your first book to get started.
+        </p>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'book_add' %}" class="btn">
+                Add Your First Book
+            </a>
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

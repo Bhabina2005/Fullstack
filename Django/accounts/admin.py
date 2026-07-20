@@ -10,7 +10,7 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
     # extend the default UserAdmin fieldsets with extra fields
     fieldsets = UserAdmin.fieldsets + (
-        ('Extra Info', {'fields': ('bio', 'profile_pic')}),
+        ('Extra Info', {'fields': ('bio',)}),
     )
 
 

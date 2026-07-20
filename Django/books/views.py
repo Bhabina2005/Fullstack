@@ -10,8 +10,8 @@ from books.forms import BookForm, ReviewForm
 
 
 def book_list(request):
-    books = Books.objects.select_related('added_by').annotate(
-        avg_rating=Avg('review__rating')
+    books = Books.objects.select_related('user').annotate(
+        avg_rating=Avg('reviews__rating')
     ).order_by('-created_at')
 
     return render(request, 'books/book_list.html', {
@@ -22,13 +22,13 @@ def book_list(request):
 def book_details(request, pk):
     book = get_object_or_404(Books, pk=pk)
 
-    reviews = book.review.select_related('user').order_by('-created_at')
+    reviews = book.reviews.select_related('user').order_by('-created_at')
 
     avg_rating = reviews.aggregate(
         avg_rating=Avg('rating')
     )['avg_rating']
 
-    return render(request, 'books/book_details.html', {
+    return render(request, 'books/book_detail.html', {
         'book': book,
         'reviews': reviews,
         'avg_rating': avg_rating,
@@ -47,9 +47,9 @@ def add_review(request, pk):
             review.user = request.user
             review.book = book
             review.save()
-            return redirect('book_details', pk=pk)
+            return redirect('book_detail', pk=pk)
 
-    return render(request, 'books/add_review.html', {
+    return render(request, 'books/add_reviews.html', {
         'form': form,
         'book': book,
     })
@@ -62,6 +62,5 @@ class BookCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('book_list')
 
     def form_valid(self, form):
-        form.instance.added_by = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
-    

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}
+        Edit Book
+    {% else %}
+        Add Book
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="login-box">
+
+    <h1 style="text-align:center; margin-bottom:30px;">
+
+        {% if object %}
+            ✏️ Edit Book
+        {% else %}
+            📚 Add New Book
+        {% endif %}
+
+    </h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <label>Book Title</label>
+        {{ form.title }}
+
+        <label>Author</label>
+        {{ form.author }}
+
+        <label>Cover Image</label>
+        {{ form.cover }}
+
+        <label>Description</label>
+        {{ form.description }}
+
+        <br><br>
+
+        <button class="btn" type="submit">
+            💾 Save Book
+        </button>
+
+        <a href="{% url 'book_list' %}" class="btn-outline">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}
